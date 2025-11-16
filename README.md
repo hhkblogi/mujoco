@@ -31,6 +31,17 @@ physics-related quantities.
 
 We also provide [Python bindings] and a plug-in for the [Unity] game engine.
 
+## Fork Protection
+
+**Note for Fork Users:** This repository includes git hooks to prevent accidental pushes to the upstream repository. If you've forked this repository, you can install the pre-push hook to avoid accidentally pushing commits to the upstream `google-deepmind/mujoco` repository.
+
+To install the hook, run:
+```bash
+./hooks/install.sh
+```
+
+For more information, see [hooks/README.md](hooks/README.md).
+
 ## Documentation
 
 MuJoCo's documentation can be found at [mujoco.readthedocs.io]. Upcoming

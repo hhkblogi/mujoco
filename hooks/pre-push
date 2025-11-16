@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+# Pre-push hook to prevent accidental pushes to upstream repository.
+# This hook prevents pushing commits to the upstream google-deepmind/mujoco repository.
+#
+# To install this hook, run:
+#   ln -s ../../hooks/pre-push .git/hooks/pre-push
+# or copy it:
+#   cp hooks/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push
+#
+
+remote="$1"
+url="$2"
+
+# Define the upstream repository URL patterns to block
+UPSTREAM_PATTERNS="
+github.com/google-deepmind/mujoco
+github.com:google-deepmind/mujoco
+"
+
+# Check if the push URL matches any upstream pattern
+for pattern in $UPSTREAM_PATTERNS; do
+    if echo "$url" | grep -q "$pattern"; then
+        echo "ERROR: Prevented push to upstream repository!"
+        echo "You are trying to push to: $url"
+        echo ""
+        echo "This appears to be the upstream google-deepmind/mujoco repository."
+        echo "Pushes to upstream are blocked to prevent accidental contributions."
+        echo ""
+        echo "If you want to push to your fork, use:"
+        echo "  git push origin <branch-name>"
+        echo ""
+        echo "If you need to contribute to upstream, please:"
+        echo "  1. Push to your fork first"
+        echo "  2. Create a pull request through GitHub's web interface"
+        echo ""
+        exit 1
+    fi
+done
+
+# Allow the push
+exit 0
