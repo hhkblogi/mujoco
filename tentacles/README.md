@@ -113,13 +113,14 @@ tentacles/
 
 **Performance Comparison:**
 
-| Format | Serialization | Deserialization | Wire Size | Round-trip Latency |
-|--------|---------------|-----------------|-----------|-------------------|
+| Format | Serialization | Deserialization | Wire Size | Round-trip Latency* |
+|--------|---------------|-----------------|-----------|--------------------|
 | **Native C** | **0 µs** (zero-copy) | **0 µs** (zero-copy) | ~4 KB | **~440-720 µs** ✅ |
 | FlatBuffers | ~1-5 µs | 0 µs (lazy) | ~3-5 KB | ~50-100 µs |
 | Protobuf | ~5-20 µs | ~10-30 µs | ~2-3 KB | ~100-300 µs |
 | JSON | ~50-200 µs | ~100-500 µs | ~8-15 KB | ~500-2000 µs |
 
+*Native C "Round-trip Latency" represents total system latency (including network stack, application logic, etc.). FlatBuffers, Protobuf, and JSON values represent only serialization/deserialization overhead, not full round-trip network latency.*
 **Rationale:**
 - **Zero-copy transmission:** `sendto(socket, &msg, sizeof(msg), ...)`
 - **No marshalling overhead:** Direct memory layout
