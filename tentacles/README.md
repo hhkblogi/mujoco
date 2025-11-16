@@ -484,7 +484,7 @@ git fetch upstream
 git checkout -b feature/tentacles-udp
 
 # All tentacles work happens here
-git add src/tentacles/
+git add tentacles/
 git commit -m "[TENTACLES] Add UDP communication layer"
 
 # Periodically sync with upstream
