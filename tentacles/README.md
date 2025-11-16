@@ -257,7 +257,7 @@ typedef struct {
 ### Building Tentacles
 
 ```bash
-cd /home/xiaochen/ws-mujoco/mujoco-dev-01
+cd <mujoco-repo>
 mkdir -p build && cd build
 
 # Configure with tentacles enabled
