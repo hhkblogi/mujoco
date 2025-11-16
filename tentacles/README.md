@@ -188,7 +188,7 @@ typedef struct {
     uint32_t version;       // Protocol version (currently 1)
     uint64_t timestamp_ns;  // Nanosecond timestamp (CLOCK_MONOTONIC)
     uint32_t sequence;      // Sequence number (for packet loss detection)
-    uint32_t checksum;      // CRC32 checksum (optional validation)
+} __attribute__((packed, aligned(8))) tentacles_msg_header_t;
 } __attribute__((packed)) tentacles_msg_header_t;
 ```
 
