@@ -188,8 +188,7 @@ typedef struct {
     uint32_t version;       // Protocol version (currently 1)
     uint64_t timestamp_ns;  // Nanosecond timestamp (CLOCK_MONOTONIC)
     uint32_t sequence;      // Sequence number (for packet loss detection)
-} __attribute__((packed, aligned(8))) tentacles_msg_header_t;
-} __attribute__((packed)) tentacles_msg_header_t;
+} __attribute__((aligned(8))) tentacles_msg_header_t;
 ```
 
 ### State Message (Simulation → Controller)
@@ -221,7 +220,7 @@ typedef struct {
     double root_vel[3];      // Linear velocity
     double root_angvel[3];   // Angular velocity
 
-} __attribute__((packed, aligned(8))) tentacles_state_msg_t;
+} __attribute__((aligned(8))) tentacles_state_msg_t;
 ```
 
 **Size:** ~2.5 KB
@@ -246,7 +245,7 @@ typedef struct {
     // Optional: feedforward terms
     double qfrc_applied[64];   // Applied forces (advanced control)
 
-} __attribute__((packed, aligned(8))) tentacles_control_msg_t;
+} __attribute__((aligned(8))) tentacles_control_msg_t;
 ```
 
 **Size:** ~1.5 KB
