@@ -424,7 +424,7 @@ sudo apt install liburing-dev cmake build-essential
 - [ ] Create `tentacles/apps/CMakeLists.txt`
   - [ ] Build `run_simulation` executable
   - [ ] Build `test_receiver` and `test_sender`
-- [ ] Modify `src/CMakeLists.txt`
+- [ ] Modify the main `CMakeLists.txt` (located in `src/` or project root, as appropriate)
   - [ ] Add `add_subdirectory(tentacles)` (conditional)
 
 ### Phase 5: Applications
